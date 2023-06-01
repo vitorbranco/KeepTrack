@@ -15,8 +15,23 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportFragmentManager.commit {
-            add(R.id.frame_container, RunningFragment())
+            replace(R.id.frame_container, RunningFragment())
         }
 
+        binding.buttonCycling.setOnClickListener { onCyclingClicked() }
+        binding.buttonRunning.setOnClickListener { onRunningClicked() }
+
+    }
+
+    private fun onRunningClicked() {
+        supportFragmentManager.commit {
+            replace(R.id.frame_container, RunningFragment())
+        }
+    }
+
+    private fun onCyclingClicked() {
+        supportFragmentManager.commit {
+            replace(R.id.frame_container, CyclingFragment())
+        }
     }
 }
